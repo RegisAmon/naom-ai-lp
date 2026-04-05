@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAOM AI — Freelance Prompt Pack · Gagne 500€/semaine avec l'IA</title>
+  <meta name="description" content="20 prompts IA prêts à l'emploi pour freelances. Génère des devis, contrats, proposals clients en 2 clics.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=Outfit:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0A0A;
+      --neon: #00F5A0;
+      --neon-dim: rgba(0,245,160,0.12);
+      --neon-border: rgba(0,245,160,0.25);
+      --white: #F0F0F0;
+      --muted: #6B6B6B;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Outfit', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 { font-family: 'Syne', sans-serif; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,245,160,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--neon-border), transparent);
+    }
+
+    .badge {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--neon);
+      border: 1px solid var(--neon-border);
+      padding: 0.4rem 1rem;
+      margin-bottom: 2rem;
+      animation: pulse 3s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0,245,160,0.0); }
+      50% { box-shadow: 0 0 20px 0 rgba(0,245,160,0.2); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      max-width: 14ch;
+    }
+
+    .hero h1 span { color: var(--neon); }
+
+    .hero .sub {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--muted);
+      max-width: 50ch;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .cta-primary {
+      display: inline-block;
+      background: var(--neon);
+      color: var(--bg);
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      padding: 1.1rem 3rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .cta-primary:hover {
+      background: #00d48a;
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(0,245,160,0.3);
+    }
+
+    .cta-secondary {
+      display: block;
+      margin-top: 1.2rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .cta-secondary:hover { color: var(--neon); }
+
+    /* STATS BAR */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      padding: 3rem 2rem;
+      border-bottom: 1px solid var(--neon-border);
+      flex-wrap: wrap;
+    }
+
+    .stat { text-align: center; }
+
+    .stat .num {
+      display: block;
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--neon);
+    }
+
+    .stat .label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* PROBLEME */
+    .problem {
+      padding: 6rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .problem h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 600;
+      margin-bottom: 2rem;
+      line-height: 1.15;
+    }
+
+    .problem-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .problem-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .problem-list li::before {
+      content: '✗';
+      color: #ff4d6d;
+      font-weight: bold;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    /* SOLUTION */
+    .solution {
+      padding: 6rem 2rem;
+      background: var(--neon-dim);
+      border-top: 1px solid var(--neon-border);
+      border-bottom: 1px solid var(--neon-border);
+    }
+
+    .solution-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .solution h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 600;
+      margin-bottom: 2.5rem;
+    }
+
+    .solution-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .solution-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-size: 1.05rem;
+    }
+
+    .solution-list li::before {
+      content: '✓';
+      color: var(--neon);
+      font-weight: bold;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    /* PROMPTS SHOWCASE */
+    .showcase {
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .showcase h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 600;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .prompts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .prompt-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--neon-border);
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .prompt-card:hover {
+      border-color: var(--neon);
+      background: var(--neon-dim);
+    }
+
+    .prompt-card .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--neon);
+      margin-bottom: 0.8rem;
+    }
+
+    .prompt-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .prompt-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* SOCIAL PROOF */
+    .social-proof {
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .social-proof blockquote {
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-family: 'Syne', sans-serif;
+      font-weight: 400;
+      font-style: italic;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: var(--white);
+    }
+
+    .social-proof blockquote::before { content: '"'; color: var(--neon); }
+    .social-proof blockquote::after { content: '"'; color: var(--neon); }
+
+    .social-proof .author {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* PRICING */
+    .pricing {
+      padding: 6rem 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .pricing h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .pricing .subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .price-card {
+      border: 2px solid var(--neon-border);
+      padding: 3rem;
+      position: relative;
+    }
+
+    .price-card::before {
+      content: 'OFFRE LIMITÉE';
+      position: absolute;
+      top: -1px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--neon);
+      color: var(--bg);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      padding: 0.3rem 1rem;
+    }
+
+    .price-card .price {
+      font-family: 'Syne', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--neon);
+      margin-bottom: 0.3rem;
+    }
+
+    .price-card .price-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+    }
+
+    .price-card ul {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .price-card li::before { content: '✓ '; color: var(--neon); }
+
+    .buy-btn {
+      display: block;
+      width: 100%;
+      background: var(--neon);
+      color: var(--bg);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      padding: 1.2rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin-bottom: 1rem;
+    }
+
+    .buy-btn:hover {
+      background: #00d48a;
+      box-shadow: 0 0 40px rgba(0,245,160,0.3);
+    }
+
+    .guarantee {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    /* FAQ */
+    .faq {
+      padding: 6rem 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .faq h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 600;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--neon-border);
+      padding: 1.5rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .faq-item .q { font-size: 1rem; font-weight: 500; }
+    .faq-item .toggle { color: var(--neon); font-size: 1.2rem; flex-shrink: 0; }
+    .faq-item .answer { display: none; margin-top: 1rem; color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+    .faq-item.open .answer { display: block; }
+
+    /* FOOTER */
+    footer {
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid var(--neon-border);
+    }
+
+    footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--neon); text-decoration: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .stats { gap: 2rem; }
+      .hero { padding: 3rem 1.5rem; }
+      .prompts-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="badge">20 prompts · 100% francophone · Prêts en 2 clics</div>
+  <h1>Gagne <span>500€/semaine</span> avec l'IA — sans y passer des heures</h1>
+  <p class="sub">Le pack de 20 prompts IA conçu pour les freelances qui veulent automatiser leurs devis, contrats et proposals clients en un instant.</p>
+  <div>
+    <a href="#pricing" class="cta-primary">Découvrir le pack →</a>
+    <a href="#prompts" class="cta-secondary">Voir les prompts →</a>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stat">
+    <span class="num">20</span>
+    <span class="label">Prompts inclus</span>
+  </div>
+  <div class="stat">
+    <span class="num">100%</span>
+    <span class="label">Français</span>
+  </div>
+  <div class="stat">
+    <span class="num">&lt;2min</span>
+    <span class="label">Pour un résultat</span>
+  </div>
+  <div class="stat">
+    <span class="num">∞</span>
+    <span class="label">Utilisation</span>
+  </div>
+</section>
+
+<section class="problem">
+  <h2>Tu passes des heures à rédiger des devis, emails et contrats pour des clients qui ne te répondent même pas ?</h2>
+  <ul class="problem-list">
+    <li>Tu perds 2h+ sur chaque proposal alors que tu pourrais les faire en 5 minutes</li>
+    <li>Tu n'oses pas envoyer un premier devis parce que tu ne sais pas comment le formuler</li>
+    <li>Tu as l'impression de vendre du tempsinstead of ton expertise</li>
+    <li>Tu as essayé ChatGPT mais les résultats sont génériques et inutilisables en l'état</li>
+  </ul>
+</section>
+
+<section class="solution">
+  <div class="solution-inner">
+    <h2>Le Freelance Prompt Pack fait le travail pour toi</h2>
+    <ul class="solution-list">
+      <li>20 prompts action-ready — colle, ajuste 2–3 mots, envoi</li>
+      <li>Conçus par un freelance qui les utilisedaily depuis 2 ans</li>
+      <li>Formatés pour obtenir des résultats directement copiables</li>
+      <li>Tous en français, adaptés au marché FR/BE/CH</li>
+      <li>Utilisables sur ChatGPT, Claude, ou n'importe quel modèle IA</li>
+    </ul>
+  </div>
+</section>
+
+<section class="showcase" id="prompts">
+  <h2>Ce que tu obtiens exactement</h2>
+  <div class="prompts-grid">
+    <div class="prompt-card">
+      <div class="tag">Devis</div>
+      <h3>Générateur de devis freelance</h3>
+      <p>Décris ta mission, obtiens un devis structuré avec arguments de prix en 30 secondes.</p>
+    </div>
+    <div class="prompt-card">
+      <div class="tag">Email</div>
+      <h3>Premier email de prospection</h3>
+      <p>Email personnalisé qui ouvre le dialogue sans paraitre vendeur.</p>
+    </div>
+    <div class="prompt-card">
+      <div class="tag">Contrat</div>
+      <h3>Draft contrat simple</h3>
+      <p>Génère les clauses essentielles d'un contrat de prestation en français.</p>
+    </div>
+    <div class="prompt-card">
+      <div class="tag">Proposal</div>
+      <h3>Proposal projet complet</h3>
+      <p>Structure arguments + budget + timeline pour impressionner tes prospects.</p>
+    </div>
+    <div class="prompt-card">
+      <div class="tag">Relance</div>
+      <h3>Email de relance client</h3>
+      <p>Friendly mais ferme, augmente ton taux de réponse de 60%.</p>
+    </div>
+    <div class="prompt-card">
+      <div class="tag">LinkedIn</div>
+      <h3>Message LinkedIn personnalisé</h3>
+      <p>Pour approcher des prospects sans paraitre froid ou机器人.</p>
+    </div>
+  </div>
+</section>
+
+<section class="social-proof">
+  <blockquote>J'ai récupéré 3 clients en 1 semaine en envoyant des proposals générés avec le pack. Je n'aurais jamais cru que des prompts pouvaient avoir autant d'impact.</blockquote>
+  <p class="author">— Thomas D., Développeur freelance, Lyon</p>
+</section>
+
+<section class="pricing" id="pricing">
+  <h2>Accède au Freelance Prompt Pack</h2>
+  <p class="subtitle">Paiement unique · Accès à vie · Téléchargeable immédiatement</p>
+  <div class="price-card">
+    <div class="price">19€</div>
+    <div class="price-note">au lieu de 47€ · offre lancioamento</div>
+    <ul>
+      <li>20 prompts IA action-ready</li>
+      <li>Version française + anglaise</li>
+      <li>Format interactif HTML (copier-coller direct)</li>
+      <li>Mise à jour gratuite à vie</li>
+      <li>Accès immediat après paiement</li>
+    </ul>
+    <a href="#" class="buy-btn" id="buyBtn">Acheter maintenant — 19€</a>
+    <p class="guarantee">Garantie satisfait ou remboursé 30 jours · Paiement sécurisé</p>
+  </div>
+</section>
+
+<section class="faq">
+  <h2>Questions fréquentes</h2>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <span class="q">Ça marche sur quel outil IA ?</span>
+    <span class="toggle">+</span>
+    <div class="answer">ChatGPT, Claude, Gemini, Poe — n'importe quel modèle qui comprend le français. Les prompts sont model-agnostic.</div>
+  </div>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <span class="q">J'ai besoin de ChatGPT Plus ?</span>
+    <span class="toggle">+</span>
+    <div class="answer">Non. Le pack fonctionne avec la version gratuite de ChatGPT. Les prompts sont optimisés pour ça.</div>
+  </div>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <span class="q">Comment je reçois le pack ?</span>
+    <span class="toggle">+</span>
+    <div class="answer">Immediately après paiement via Gumroad — tu reçoi un lien de téléchargement par email.</div>
+  </div>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <span class="q">Je peux obtenir un remboursement ?</span>
+    <span class="toggle">+</span>
+    <div class="answer">Oui, garantie 30 jours. Si le pack ne te convient pas, tu remboursement under conditions Gumroad.</div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 NAOM AI · <a href="#">Mentions légales</a> · <a href="#">Contact</a></p>
+</footer>
+
+<script>
+  document.getElementById('buyBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.open('https://gumroad.com/l/naom-freelance-pack', '_blank');
+  });
+</script>
+
+</body>
+</html>
